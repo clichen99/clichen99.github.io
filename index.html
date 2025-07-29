@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Celia Chen - Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfdfd;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 25px;
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+            border-bottom-color: #3498db;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .interest-tag {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .publication {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .pub-venue {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        .pub-links {
+            margin-top: 8px;
+        }
+
+        .pub-links a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-download {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cv-download a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cv-download a:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            nav a {
+                margin: 0 15px;
+                font-size: 0.9em;
+            }
+
+            .research-interests {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-photo">
+                Your Photo Here
+            </div>
+            <h1>Dr. Celia Chen</h1>
+            <div class="title">Postdoctoral Researcher in Information Studies</div>
+            <div class="contact-info">
+                <a href="mailto:clichen@umd.edu">clichen@umd.edu</a> • 
+                <a href="https://ischool.umd.edu/directory/celia-chen/">UMD Profile</a> • 
+                <a href="https://orcid.org/0009000899678968">0009-0008-9967-8968</a>
+            </div>
+        </header>
+
+        <nav>
+            <a href="#about" class="active">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#cv">CV</a>
+        </nav>
+
+        <section id="about">
+            <h2>About</h2>
+            <div class="about-text">
+                <p>I'm a postdoctoral researcher at the University of Maryland College of Information Sciences, working on cybersecurity professional development and AI integration through an IC Postdoctoral Research Fellowship. I recently completed my PhD in Information Studies at UMD, where I investigated how expertise is communicated, performed, and assessed across different digital environments.</p>
+                
+                <p>My research focuses on understanding how digital platforms transform traditional mechanisms of expertise validation and how professionals maintain their domain knowledge when integrating AI tools. I'm generally interested in radicalization and extremism research, expertise signaling in online environments, and the intersection of human expertise with AI-driven systems.</p>
+            </div>
+            
+            <div class="research-interests">
+                <span class="interest-tag">Expertise & Authority Online</span>
+                <span class="interest-tag">AI Integration & Human Expertise</span>
+                <span class="interest-tag">Radicalization & Extremism</span>
+                <span class="interest-tag">Social Media & Digital Platforms</span>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <div class="about-text">
+                <p><strong>Current Project:</strong> Through my IC Postdoctoral Research Fellowship, I'm looking at how cybersecurity professionals maintain and develop their domain expertise while integrating AI-driven approaches. This work examines strategies for preserving critical skills like threat detection intuition and incident response capabilities, with the goal of developing design principles for AI systems that enhance rather than supplant human expertise.</p>
+                
+                <p><strong>PhD Research:</strong> My dissertation, "Stethoscopes to #SelfCare: The Transformation of Expertise Dynamics in Digital Environments," examined how expertise is communicated and validated across digital platforms through three case studies: physicians on Twitter/X, mental health content creators on TikTok, and graduate students assessing AI-generated content. The work demonstrates how digital platforms actively reshape expertise signaling and validation processes.</p>
+                
+                <p><strong>Ongoing Work:</strong> I serve as PI on a PROGRESS grant examining social media discourse around school safety technologies in the wake of school shootings. This mixed-methods study combines computational analysis of social media posts with community-based participatory research with Prince George's County Public Schools to understand how online narratives shape perceptions of safety technologies and how they align with on-the-ground realities. With my advisor Jennifer Golbeck, I also research radicalization and extremism, particularly focusing on incel communities and broader patterns of online violence.</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="publication">
+                <div class="pub-title">In Bad Faith: Assessing Discussion Quality on Social Media</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch, William Jordan Conway, Eric Cotugno, Emily Klein, Rajesh Kumar Gnanasekaran, Kristin Buckstad Hamilton, Casi Sherman, Celia Sterrn, Logan C. Stevens, Rebecca Zarrella, Jennifer Golbeck</div>
+                <div class="pub-venue">ASONAM 2025</div>
+                <div class="pub-links">
+                    <a href="#">PDF</a>
+                    <a href="#">DOI</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Why I Took the Blackpill: A Thematic Analysis of the Radicalization Process in Incel Communities</div>
+                <div class="pub-authors">Jennifer Golbeck, <strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">ASONAM 2025</div>
+                <div class="pub-links">
+                    <a href="#">PDF</a>
+                    <a href="#">DOI</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Evaluating Machine Expertise: How Graduate Students Develop Frameworks for Assessing GenAI Content</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">Human-GenAI Interactions Workshop, WebSci 2025</div>
+                <div class="pub-links">
+                    <a href="#">PDF</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Exploring Twitter Discourse on Safety Technology in U.S. Schools</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Lovely Frances-Domingo</div>
+                <div class="pub-venue">Social Media & Society 2024</div>
+                <div class="pub-links">
+                    <a href="#">PDF</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Cross-Platform Violence Detection on Social Media: A Dataset and Analysis</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Scotty Beland, William Conway, Eric Cotugno, et al., Jennifer Golbeck</div>
+                <div class="pub-venue">WebSci 2025 (Poster)</div>
+                <div class="pub-links">
+                    <a href="#">PDF</a>
+                    <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ANGOX0">Dataset</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cv">
+            <h2>Curriculum Vitae</h2>
+            <div class="cv-download">
+                <a href="your-cv.pdf" target="_blank">Download CV (PDF)</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: July 2025 • Built with HTML & CSS</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
