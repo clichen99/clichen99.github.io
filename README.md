@@ -1,2 +1,2 @@
 # clichen99.github.io
-Personal website
+Building my personal website now that I've graduated! I'm working on getting a profile picture into this thing right now.
