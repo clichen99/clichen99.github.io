@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing and Conducting Interviews for HCI Research - CHI 2026 Workshop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfdfd;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .conference-info {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .workshop-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .workshop-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+            border-bottom-color: #3498db;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            font-weight: 500;
+        }
+
+        .content-text {
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+        }
+
+        .content-text ul {
+            margin: 20px 0 20px 25px;
+        }
+
+        .content-text li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: #ecf0f1;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .organizer {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .organizer:last-child {
+            border-bottom: none;
+        }
+
+        .organizer-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .organizer-affiliation {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .organizer-bio {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .date-list {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .date-item {
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .date-item strong {
+            color: #2c3e50;
+        }
+
+        .submission-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .submission-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .submission-box p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .submission-box a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #667eea;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .workshop-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="conference-info">CHI 2026 Workshop • Barcelona, Spain</div>
+            <h1>Designing and Conducting Interviews for Human-Computer Interaction Research</h1>
+            <div class="subtitle">A hands-on workshop for developing practical interview skills</div>
+            <div class="workshop-meta">
+                <span>📅 April 13-17, 2026 (Date TBD)</span>
+                <span>⏱️ 90 minutes</span>
+                <span>👥 12-18 participants</span>
+                <span>📍 In-person only</span>
+            </div>
+        </header>
+
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#cfp">Call for Participation</a>
+            <a href="#organizers">Organizers</a>
+            <a href="#dates">Important Dates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <section id="overview">
+            <h2>Workshop Overview</h2>
+            <div class="content-text">
+                <p>Human-computer interaction research increasingly requires understanding not just user behaviors, but the mental models and evaluation frameworks that guide user decision-making with technology. While interviews remain essential for uncovering these cognitive processes, many HCI researchers receive limited formal training in interview methodology, often defaulting to survey methods despite their limitations for exploring user cognition.</p>
+
+                <p>This hands-on workshop provides practical training in interview-based qualitative research methods tailored specifically for HCI contexts. Through collaborative exercises and structured practice sessions, participants will develop concrete skills in designing interview protocols, conducting effective interviews, and managing common methodological challenges.</p>
+
+                <div class="highlight-box">
+                    <h3>What You'll Learn</h3>
+                    <ul>
+                        <li>Design interview protocols that reveal user mental models and evaluation processes</li>
+                        <li>Practice interviewing techniques through guided peer interactions</li>
+                        <li>Develop effective probing and follow-up questioning strategies</li>
+                        <li>Receive immediate feedback on your approach from experienced researchers</li>
+                        <li>Refine interview questions directly relevant to your ongoing research</li>
+                    </ul>
+                </div>
+
+                <h3>Workshop Format</h3>
+                <p>The 90-minute session emphasizes practical skill-building over theoretical discussion. Participants will work with their own research questions throughout, ensuring immediate relevance to their projects. The workshop includes:</p>
+                <ul>
+                    <li><strong>Collaborative Question Development (20 min):</strong> Small group work to refine research questions into effective interview prompts</li>
+                    <li><strong>Structured Practice Rounds (35 min):</strong> Two rounds of practice interviews with peer feedback</li>
+                    <li><strong>Group Analysis (15 min):</strong> Discussion of challenges and strategies for common methodological issues</li>
+                    <li><strong>Resources & Next Steps (5 min):</strong> Templates, guides, and continued learning materials</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cfp">
+            <h2>Call for Participation</h2>
+            
+            <div class="submission-box">
+                <h3>Submission Requirements</h3>
+                <p>Submit a 2-3 page position paper (approximately 1000 words) describing a research context where you want to employ interview methods.</p>
+                
+                <p><strong>Your submission should include:</strong></p>
+                <ul>
+                    <li>Brief description of your research domain and current methodological approach</li>
+                    <li>Specific aspects of user behavior or cognition you hope to understand through interviews</li>
+                    <li>3-5 initial interview questions focusing on topics where other HCI researchers would have relevant personal experience (e.g., technology workflows, research tool usage, academic collaboration practices)</li>
+                </ul>
+                
+                <p><strong>Submit to:</strong> <a href="mailto:clichen@umd.edu">clichen@umd.edu</a></p>
+                <p><strong>Deadline:</strong> Thursday, February 12, 2026 (AoE)</p>
+                <p><strong>Notification:</strong> One week before early registration deadline</p>
+            </div>
+
+            <div class="content-text">
+                <h3>Who Should Attend</h3>
+                <p>This workshop is designed for HCI researchers at the graduate level or beyond who:</p>
+                <ul>
+                    <li>Have limited formal training in interview methodology</li>
+                    <li>Have ongoing or planned research projects where understanding user cognition, evaluation processes, or technology decision-making would benefit from interview-based inquiry</li>
+                    <li>Want to develop practical skills through hands-on practice and immediate feedback</li>
+                </ul>
+                <p>No prior interview experience is required, though participants with some exposure to qualitative methods will also benefit from the structured practice components.</p>
+
+                <h3>Expected Outcomes</h3>
+                <p>By the workshop's conclusion, participants will have:</p>
+                <ul>
+                    <li>A set of tested interview questions relevant to their research context, revised based on feedback</li>
+                    <li>Direct experience with core interview techniques including maintaining conversation flow and formulating effective follow-up questions</li>
+                    <li>Proficiency in recognizing when responses require deeper exploration</li>
+                    <li>A resource package including interview protocol templates, transcription recommendations, and suggested readings</li>
+                    <li>Connections with other researchers facing similar methodological challenges</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="organizers">
+            <h2>Workshop Organizers</h2>
+
+            <div class="organizer">
+                <div class="organizer-name">Celia Chen</div>
+                <div class="organizer-affiliation">Postdoctoral Researcher, University of Maryland College of Information Studies</div>
+                <div class="organizer-bio">
+                    Dr. Celia Chen is a postdoctoral researcher conducting research on expertise dynamics in digital environments through an IC Postdoctoral Research Fellowship. Their doctoral dissertation examined how users evaluate and trust different forms of authority online. Chen has extensive experience with qualitative research methodologies, specifically semi-structured interviews and thematic analysis. Their recent work includes studies of graduate student evaluation frameworks for AI-generated content and analysis of professional identity signaling on social media platforms. They have published findings from interview-based studies at ACM venues including WebSci.
+                </div>
+            </div>
+
+            <div class="organizer">
+                <div class="organizer-name">Alex Leitch</div>
+                <div class="organizer-affiliation">Non-tenure-track Faculty & PhD Candidate, University of Maryland</div>
+                <div class="organizer-bio">
+                    Alex Leitch leads multiple studio sections per semester on interaction design, game design, programming human-centered interfaces, and technology for experience design. They have previously led workshops on negotiation through game design, team building, capacitive machine interaction, prop-making, and speculative design. Their ongoing doctoral research focuses on how people's use of tools impacts their technical imaginary using mixed methods, including semi-structured interviews, participant observation, and quantitative network response analysis. Alex has presented their work at CHI, WebSci, and GDC, among other venues.
+                </div>
+            </div>
+        </section>
+
+        <section id="dates">
+            <h2>Important Dates</h2>
+            <div class="date-list">
+                <div class="date-item"><strong>February 12, 2026:</strong> Position paper submission deadline (AoE)</div>
+                <div class="date-item"><strong>One week before early registration:</strong> Participant notification</div>
+                <div class="date-item"><strong>April 13-17, 2026:</strong> CHI 2026 Conference (workshop date TBD)</div>
+            </div>
+            <p class="content-text">All deadlines are in Anywhere on Earth (AoE) time zone.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <div class="content-text">
+                <p>For questions about the workshop, please contact the organizers:</p>
+                <p>
+                    <strong>Celia Chen</strong><br>
+                    <a href="mailto:clichen@umd.edu">clichen@umd.edu</a>
+                </p>
+                <p>
+                    <strong>Alex Leitch</strong><br>
+                    <a href="mailto:aleitch1@umd.edu">aleitch1@umd.edu</a>
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>CHI 2026 Workshop • Creant el demà junts • Barcelona, April 13-17, 2026</p>
+            <p style="margin-top: 10px;">
+                <a href="https://chi2026.acm.org/" style="color: #3498db; text-decoration: none;">CHI 2026 Conference Website</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
