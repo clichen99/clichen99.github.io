@@ -485,7 +485,7 @@
             <div class="personal-item">
                 <div class="talk-title">Gaming Habit</div>
                 <div class="talk-description">
-                    I enjoy video games, especially during Maryland's hot, humid, stormy summers. I have a fondness for what I call "spreadsheet gaming" - games where success can be found through number crunching to minimize randomness. I've played TFT (Teamfight Tactics) somewhat competitively for several sets and occasionally compete in small tournaments. Currently playing Metaphor: ReFantazio, Peak, and Uma Musume: Pretty Derby (where my current pet project is building a program to optimize PVP teams).
+                    I enjoy video games, especially during Maryland's summers when it's too hot and humid to be outside. I have a fondness for what I call "spreadsheet gaming" - games where success can be found through number crunching to minimize randomness. I've played TFT (Teamfight Tactics) somewhat competitively for several sets and occasionally compete in small tournaments. 
                 </div>
             </div>
 
@@ -520,7 +520,7 @@
         <section id="about">
             <h2>About</h2>
             <div class="about-text">
-                <p>I'm a postdoctoral researcher at the University of Maryland College of Information Sciences, working on cybersecurity professional development and AI integration through an IC Postdoctoral Research Fellowship. I recently completed my PhD in Information Studies at UMD, where I investigated how expertise is communicated, performed, and assessed across different digital environments.</p>
+                <p>I'm a postdoctoral researcher at the University of Maryland College of Information, working on cybersecurity professional development and AI integration through an IC Postdoctoral Research Fellowship. I recently completed my PhD in Information Studies at UMD, where I investigated how expertise is communicated, performed, and assessed across different digital environments.</p>
                 
                 <p>My research focuses on understanding how digital platforms transform traditional mechanisms of expertise validation and how professionals maintain their domain knowledge when integrating AI tools. I'm generally interested in radicalization and extremism research, expertise signaling in online environments, and the intersection of human expertise with AI-driven systems.</p>
             </div>
@@ -673,18 +673,23 @@
         // Simple smooth scrolling for main navigation links
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
-                // Add active class to clicked link
-                this.classList.add('active');
-                
-                // Smooth scroll to section
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                const href = this.getAttribute('href');
+        
+                 // Only prevent default for anchor links (starting with #)
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+            
+                    // Remove active class from all links
+                    document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    this.classList.add('active');
+            
+                    // Smooth scroll to section
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         });
