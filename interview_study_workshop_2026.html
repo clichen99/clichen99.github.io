@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Celia Chen - Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfdfd;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 30px 25px;
+            background: rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-title {
+            font-size: 1.3em;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1);
+            border-left-color: white;
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-sidebar:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Sidebar Toggle Button */
+        .sidebar-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 999;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .sidebar-toggle:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Content sections for sidebar pages */
+        .sidebar-content {
+            display: none;
+            padding: 40px 25px;
+        }
+
+        .sidebar-content.active {
+            display: block;
+        }
+
+        .sidebar-content h3 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .sidebar-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .talk-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid white;
+        }
+
+        .talk-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .talk-venue {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .talk-description {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .personal-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .profile-photo-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 25px;
+            display: block;
+            border: 2px solid #e5e5e5;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 25px;
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+            border-bottom-color: #3498db;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .interest-tag {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .publication {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .pub-venue {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        .pub-links {
+            margin-top: 8px;
+        }
+
+        .pub-links a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9em;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-download {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .cv-download a {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cv-download a:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            nav a {
+                margin: 0 15px;
+                font-size: 0.9em;
+            }
+
+            .research-interests {
+                justify-content: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .sidebar-toggle {
+                top: 20px;
+                right: 20px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Open menu">
+        ☰
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-sidebar" onclick="closeSidebar()" aria-label="Close menu">×</button>
+        
+        <div class="sidebar-header">
+            <div class="sidebar-title">More About Celia</div>
+            <div class="sidebar-subtitle">Beyond the CV</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" onclick="showSidebarContent('talks')" class="sidebar-nav-item active">Talks & Presentations</a>
+            <a href="#" onclick="showSidebarContent('personal')" class="sidebar-nav-item">Beyond Research</a>
+        </nav>
+
+        <!-- Talks & Presentations Content -->
+        <div class="sidebar-content active" id="talks-content">
+            <h3>Talks & Presentations</h3>
+            
+            <div class="talk-item">
+                <div class="talk-title">Three Minute Thesis (3MT)</div>
+                <div class="talk-venue">University of Maryland, 2024</div>
+                <div class="talk-description">
+                    My dissertation research condensed into three minutes! 
+                    <br><br>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 10px; border-radius: 8px;">
+                        <iframe 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                            src="https://drive.google.com/file/d/1cooQXCz1gSmBs0ja9u1pLwNNihfRUifd/preview" 
+                            frameborder="0" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="talk-item">
+                <div class="talk-title">HCIL Brown Bag Speaker Series</div>
+                <div class="talk-venue">With Alex Leitch, January 2024</div>
+                <div class="talk-description">
+                    Joint presentation with Alex Leitch on our collaborative work - I love this Strain project, and it was a blast to put together.
+                    <br><br>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 10px; border-radius: 8px;">
+                        <iframe 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
+                            src="https://www.youtube.com/embed/o6hhzOhWK9M" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beyond Research Content -->
+        <div class="sidebar-content" id="personal-content">
+            <h3>Beyond Research</h3>
+            
+            <div class="personal-item">
+                <div class="talk-title">Music & Dance</div>
+                <div class="talk-description">
+                    Before I was a researcher, I was a musician and performer! My main instrument is the 古筝 (guzheng), or Chinese zither, but I also play the cello, piano, guitar, and pedal harp. Outside of the instruments, I also used to be a dancer and performed everything from lion dance to hip hop.
+                </div>
+            </div>
+
+            <div class="personal-item">
+                <div class="talk-title">Kitchen Adventures</div>
+                <div class="talk-description">
+                    I learned to cook working alongside my uncle in his restaurant kitchen in southern Vermont - he served contemporary American cuisine with French and Asian influences, and I'd help with breakfast and dinner service. I continue to hone my skills in my own kitchen, though my overly-sensitive smoke detector has strong opinions about wok hei.
+                </div>
+            </div>
+
+            <div class="personal-item">
+                <div class="talk-title">Gaming Habit</div>
+                <div class="talk-description">
+                    I enjoy video games, especially during Maryland's hot, humid, stormy summers. I have a fondness for what I call "spreadsheet gaming" - games where success can be found through number crunching to minimize randomness. I've played TFT (Teamfight Tactics) somewhat competitively for several sets and occasionally compete in small tournaments. Currently playing Metaphor: ReFantazio, Peak, and Uma Musume: Pretty Derby (where my current pet project is building a program to optimize PVP teams).
+                </div>
+            </div>
+
+            <div class="personal-item">
+                <div class="talk-title">Unruly Roommate</div>
+                <div class="talk-description">
+                    My rabbit Luna is both a menace and a delight. She's free-roam, so she has the run of half my apartment and makes full use of it. She's very demanding about being groomed, has strong opinions about egg carton placement (namely that they should be tossed around), and though she is only 3 pounds she's definitely the one in charge around here. 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="./headshot1_edit.JPG" alt="Celia Chen" class="profile-photo-img">
+            <h1>Dr. Celia Chen</h1>
+            <div class="title">Postdoctoral Researcher in Information Studies</div>
+            <div class="contact-info">
+                <a href="mailto:clichen@umd.edu">clichen@umd.edu</a> • 
+                <a href="https://ischool.umd.edu/directory/celia-chen/">UMD Profile</a> • 
+                <a href="https://scholar.google.com/citations?hl=en&user=Q25Rox8AAAAJ">Google Scholar</a>
+            </div>
+        </header>
+
+        <nav>
+            <a href="#about" class="active">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#cv">CV</a>
+        </nav>
+
+        <section id="about">
+            <h2>About</h2>
+            <div class="about-text">
+                <p>I'm a postdoctoral researcher at the University of Maryland College of Information Sciences, working on cybersecurity professional development and AI integration through an IC Postdoctoral Research Fellowship. I recently completed my PhD in Information Studies at UMD, where I investigated how expertise is communicated, performed, and assessed across different digital environments.</p>
+                
+                <p>My research focuses on understanding how digital platforms transform traditional mechanisms of expertise validation and how professionals maintain their domain knowledge when integrating AI tools. I'm generally interested in radicalization and extremism research, expertise signaling in online environments, and the intersection of human expertise with AI-driven systems.</p>
+            </div>
+            
+            <div class="research-interests">
+                <span class="interest-tag">Expertise & Authority Online</span>
+                <span class="interest-tag">AI Integration & Human Expertise</span>
+                <span class="interest-tag">Radicalization & Extremism</span>
+                <span class="interest-tag">Social Media & Digital Platforms</span>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <div class="about-text">
+                <p><strong>Current Project:</strong> Through my IC Postdoctoral Research Fellowship, I'm looking at how cybersecurity professionals maintain and develop their domain expertise while integrating AI-driven approaches. This work examines strategies for preserving critical skills like threat detection intuition and incident response capabilities, with the goal of developing design principles for AI systems that enhance rather than supplant human expertise.</p>
+                
+                <p><strong>PhD Research:</strong> My dissertation, "Stethoscopes to #SelfCare: The Transformation of Expertise Dynamics in Digital Environments," examined how expertise is communicated and validated across digital platforms through three case studies: physicians on Twitter/X, mental health content creators on TikTok, and graduate students assessing AI-generated content. The work demonstrates how digital platforms actively reshape expertise signaling and validation processes.</p>
+                
+                <p><strong>Ongoing Work:</strong> I serve as PI on a PROGRESS grant examining social media discourse around school safety technologies in the wake of school shootings. This mixed-methods study combines computational analysis of social media posts with community-based participatory research with Prince George's County Public Schools to understand how online narratives shape perceptions of safety technologies and how they align with on-the-ground realities. With my advisor Jennifer Golbeck, I also research radicalization and extremism, particularly focusing on incel communities and broader patterns of online violence.</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="publication">
+                <div class="pub-title">In Bad Faith: Assessing Discussion Quality on Social Media</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch, William Jordan Conway, Eric Cotugno, Emily Klein, Rajesh Kumar Gnanasekaran, Kristin Buckstad Hamilton, Casi Sherman, Celia Sterrn, Logan C. Stevens, Rebecca Zarrella, Jennifer Golbeck</div>
+                <div class="pub-venue">ASONAM 2025</div>
+                <div class="pub-links">
+                    <a href="#">PDF (Available August 2025)</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Why I Took the Blackpill: A Thematic Analysis of the Radicalization Process in Incel Communities</div>
+                <div class="pub-authors">Jennifer Golbeck, <strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">ASONAM 2025</div>
+                <div class="pub-links">
+                    <a href="#">PDF (Available August 2025)</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Cross-Platform Violence Detection on Social Media: A Dataset and Analysis</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Scotty Beland, William Conway, Eric Cotugno, et al., Jennifer Golbeck</div>
+                <div class="pub-venue">WebSci 2025 (Poster)</div>
+                <div class="pub-links">
+                    <a href="https://dl.acm.org/doi/pdf/10.1145/3717867.3717877">PDF</a>
+                    <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ANGOX0">Dataset</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Evaluating Machine Expertise: How Graduate Students Develop Frameworks for Assessing GenAI Content</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">Human-GenAI Interactions Workshop, WebSci 2025</div>
+                <div class="pub-links">
+                    <a href="https://dl.acm.org/doi/pdf/10.1145/3720554.3735861">PDF</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Unlimited Editions: Documenting Human Style in AI Art Generation</div>
+                <div class="pub-authors">Alex Leitch, <strong>Celia Chen</strong></div>
+                <div class="pub-venue">altCHI 2025</div>
+                <div class="pub-links">
+                    <a href="Unlimited_Editions_altchi25.pdf">PDF</a>
+                    <a href="https://dl.acm.org/doi/abs/10.1145/3706599.3716214">DOI</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Show Me the Curve: A Cross-Platform Thematic Analysis of Flat Earth Social Media Posts</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Sagar Baraskar, Xin Chen, et al., Jennifer Golbeck</div>
+                <div class="pub-venue">SBP-BRiMS 2024 (Poster)</div>
+                <div class="pub-links">
+                    <a href="https://sbp-brims.org/2024/papers/working-papers/Chen_SBP-BRiMS2024_Final_64.pdf">PDF</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">LLMs as Academic Reading Companions: Extending HCI Through Synthetic Personae</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">CHI 2024 Workshop</div>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/pdf/2403.19506">PDF</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Ephemeral Myographic Motion: Repurposing the Myo Armband to Control Disposable Pneumatic Sculptures</div>
+                <div class="pub-authors"><strong>Celia Chen</strong>, Alex Leitch</div>
+                <div class="pub-venue">CHI 2024 Workshop</div>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/pdf/2404.08065">PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cv">
+            <h2>Curriculum Vitae</h2>
+            <div class="cv-download">
+                <a href="cv_7_30_2025.pdf" target="_blank">Download CV (PDF)</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: July 2025 • Built with HTML & CSS</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        }
+
+        function showSidebarContent(contentType) {
+            // Hide all content sections
+            document.querySelectorAll('.sidebar-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all nav items
+            document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(contentType + '-content').classList.add('active');
+            
+            // Add active class to clicked nav item
+            event.target.classList.add('active');
+        }
+
+        // Simple smooth scrolling for main navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside or pressing escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSidebar();
+            }
+        });
+    </script>
+</body>
+</html>
